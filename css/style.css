@@ -26,7 +26,7 @@ body{
   font-family: 'Lobster', cursive;
 }
 .text-logo{
-  font-family: 'Abril Fatface', cursive;
+  font-family: 'Lobster', cursive;
   color: #e7480f;
   text-shadow: 2px 2px #ffd301;
   font-size: 50px;
@@ -40,8 +40,14 @@ body{
 .nav{
   margin-bottom: 40px;
 }
+.card{
+  padding: 5px;
+}
 .card img{
   background: #ffd301;
+}
+.col-sm-6.col-md-4{
+  margin-bottom: 15px;
 }
 .price{
   background: #5cb85c;
@@ -67,15 +73,27 @@ body{
   color:#e7480f;
   font-size: 18px;
 }
-.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover{
+.nav-pills .nav-link.active{
   background: #e7480f
 }
-.nav>li>a:focus, .nav>li>a:hover{
+.nav li a:focus, .nav li a:hover{
   color: #e7480f;
   background-color: #eee;
 }
-.nav>li>a{
+.nav li a{
   color: #eee;
   font-size: 18px;
   text-shadow: 2px 2px #333;
+}
+.btn-order{
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #e7480f;
+  text-decoration: none;
+  text-shadow: 2px 2px #333
+}.btn-order:hover, .btn-order:focus{
+  color: #fff;
+  background-color: #c13c0d;
 }
