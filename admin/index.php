@@ -30,28 +30,26 @@
             </th>
           </thead>
           <tbody>
-            <tr>
-              <td>Item 1</td>
-              <td>Description 1</td>
-              <td>Prix 1</td>
-              <td>Catégorie 1</td>
-              <td width="300">
-                <a class="btn btn-outline-dark" href="view.php?id=1"><span class="far fa-eye"></span> Voir</a>
-                <a class="btn btn-primary" href="update.php?id=1"><span class="fas fa-pen"></span> Modifier</a>
-                <a class="btn btn-danger" href="delete.php?id=1"><span class="far fa-trash-alt"></span> Supprimer</a>
-              </td>
-            </tr>
-            <tr>
-              <td>Item 2</td>
-              <td>Description 2</td>
-              <td>Prix 2</td>
-              <td>Catégorie 2</td>
-              <td width="300">
-                <a class="btn btn-outline-dark" href="view.php?id=2"><span class="far fa-eye"></span> Voir</a>
-                <a class="btn btn-primary" href="update.php?id=2"><span class="fas fa-pen"></span> Modifier</a>
-                <a class="btn btn-danger" href="delete.php?id=2"><span class="far fa-trash-alt"></span> Supprimer</a>
-              </td>
-            </tr>
+            <?php
+            require 'database.php';
+            $db = database::connect();
+            $statement = $db->query('SELECT items.id, items.name, items.description, items.price, categories.name AS category From items LEFT JOIN categories ON items.category = categories.id ORDER BY items.id DESC');
+            while($item = $statement->fetch()){
+              echo '<tr>';
+              echo '<td>' . $item['name'] . '</td>';
+              echo '<td>' . $item['description'] . '</td>';
+              echo '<td>' . $item['price'] . '</td>';
+              echo '<td>' . $item['category'] . '</td>';
+              echo '<td width="300">';
+              echo '<a class="btn btn-outline-dark" href="view.php?id=' . $item['id'] . '"><span class="far fa-eye"></span> Voir</a>';
+              echo ' ';
+              echo '<a class="btn btn-primary" href="update.php?id=' . $item['id'] . '"><span class="fas fa-pen"></span> Modifier</a>';
+              echo ' ';
+              echo '<a class="btn btn-danger" href="delete.php?id=' . $item['id'] . '"><span class="far fa-trash-alt"></span> Supprimer</a>';
+              echo '</td>';
+              echo '</tr>';
+            }
+            ?>
           </tbody>
         </table>
       </div>
