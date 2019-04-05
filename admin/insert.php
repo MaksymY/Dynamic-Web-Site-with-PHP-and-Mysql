@@ -1,5 +1,9 @@
 <?php 
   require 'database.php';
+
+  $nameError = $descriptionError = $priceError = $categoryError = $imageError = $name = $description = $price = $category = $image = "";
+
+
 ?>
 
 
@@ -50,7 +54,7 @@
                        foreach($db->query('SELECT * FROM categories') as $row){
                          echo'<option value= "' . $row['id'] . '">' . $row['name'] . '</option>';
                        }
-                       $Database::disconnect();
+                       Database::disconnect();
                    ?> 
                 </select>
                 <span class="help-inline"><?php echo $categoryError; ?></span>
