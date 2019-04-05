@@ -51,7 +51,7 @@
                 <label>Description:</label><?php echo ' ' . $item['description']; ?>
               </div>
               <div class="form-group">
-                <label>Prix:</label><?php echo ' ' . number_format((float)$item['price'],2, '.', ''); ?>
+                <label>Prix:</label><?php echo ' ' . number_format((float)$item['price'],2, '.', '') . ' $'; ?>
               </div>
               <div class="form-group">
                 <label>Catégorie:</label><?php echo ' ' . $item['category']; ?>
@@ -69,7 +69,7 @@
         <div class="col-sm-6 site">
             <div class="card">
               <img src="<?php echo'../images/' . $item['image'] ?>" alt="..." class="card-img-top">
-              <div class="price"><?php echo number_format((float)$item['price'],2, '.', ''); ?></div>
+              <div class="price"><?php echo number_format((float)$item['price'],2, '.', '') . ' $'; ?></div>
               <div class="card-block">
                 <h4 class="card-title"><?php echo $item['name']; ?></h4>
                 <p class="card-text"><?php echo $item['description']; ?></p>

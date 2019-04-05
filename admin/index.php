@@ -40,7 +40,7 @@
               echo '<td>' . $item['description'] . '</td>';
               echo '<td>' . number_format((float)$item['price'],2, '.', '') . '</td>';
               echo '<td>' . $item['category'] . '</td>';
-              echo '<td width="300">';
+              echo '<td width="350">';
               echo '<a class="btn btn-outline-dark" href="view.php?id=' . $item['id'] . '"><span class="far fa-eye"></span> Voir</a>';
               echo ' ';
               echo '<a class="btn btn-primary" href="update.php?id=' . $item['id'] . '"><span class="fas fa-pen"></span> Modifier</a>';
