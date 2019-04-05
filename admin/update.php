@@ -16,7 +16,6 @@
       $imagePath = '../images/' . basename($image);
       $imageExtension = pathinfo($imagePath, PATHINFO_EXTENSION);
       $isSuccess = true;
-      $isUploadSuccess = false;
 
       if(empty($name)){
           $nameError = 'Ce champ ne peut pas être vide';
@@ -35,9 +34,10 @@
         $isSuccess = false;
       }
       if(empty($image)){
-        $imageError = 'Ce champ ne peut pas être vide';
-        $isSuccess = false;
+        $isImageUpdated = false;
       }else{
+
+            $isImageUpdated = true;
             $isUploadSuccess = true;
             if($imageExtension != "jpg" && $imageExtension !="png" && $imageExtension !="jpeg" && $imageExtension != "gif"){
                 $imageError="Les fichier autorises sont: .jpg, .jpeg, .png, .gif";
@@ -58,7 +58,7 @@
                 }
             }
         }
-        if($isSuccess && $isUploadSuccess){
+        if(($isSuccess && $isImageUpdated && $isUploadSuccess) || ($isSuccess && !$isImageUpdated)){
             $db = Database::connect();
             $statement = $db->prepare("INSERT INTO items (name,description,price,category,image) values(?, ?, ?, ?, ?)");
             $statement->execute(array($name,$description,$price,$category,$image));
