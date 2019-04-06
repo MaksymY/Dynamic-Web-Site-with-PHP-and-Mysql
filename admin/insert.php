@@ -135,7 +135,7 @@
 
           
           <div class="form-actions">
-              <button type="submite" class="btn btn-success"><span class="fas fa-pen"> Ajouter</span></button>
+              <button type="submite" class="btn btn-success"><span class="fas fa-pen"></span> Ajouter</button>
               <a class="btn btn-primary" href="index.php"><span class="fas fa-arrow-left"></span> Retour</a>
           </div>
         </form>
