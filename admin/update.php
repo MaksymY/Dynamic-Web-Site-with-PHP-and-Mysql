@@ -60,11 +60,39 @@
         }
         if(($isSuccess && $isImageUpdated && $isUploadSuccess) || ($isSuccess && !$isImageUpdated)){
             $db = Database::connect();
-            $statement = $db->prepare("INSERT INTO items (name,description,price,category,image) values(?, ?, ?, ?, ?)");
-            $statement->execute(array($name,$description,$price,$category,$image));
+            if($isImageUpdated){
+                $statement = $db->prepare("UPDATE items set name = ?, description = ?, price = ?, category = ?, image = ? WHERE id = ?");
+                $statement->execute(array($name,$description,$price,$category,$image,$id));
+            }
+            else{
+                $statement = $db->prepare("UPDATE items set name = ?, description = ?, price = ?, category = ? WHERE id = ?");
+                $statement->execute(array($name,$description,$price,$category,$id));
+            }
             Database::disconnect();
             header("Location: index.php");
         }
+        else if($isImageUpdated && !$isUploadSuccess){
+          $db = Database::connect();
+          $statement = $db->prepare("SELECT image FROM items where id = ?");
+          $statement->execute(array($id));
+          $item = $statement->fetch();
+          $image = $item['image'];
+          Database::disconnect();
+        }
+
+  }
+  else{
+      $db = Database::connect();
+      $statement = $db->prepare("SELECT * FROM items WHERE id = ?");
+      $statement->execute(array($id));
+      $item = $statement->fetch();
+      $name = $item['name'];
+      $description = $item['description'];
+      $price = $item['price'];
+      $category = $item['category'];
+      $image = $item['image'];
+      Database::disconnect();
+
   }
 
 
@@ -150,6 +178,17 @@
             </div>
             </form>
         </div>
+        <div class="col-sm-6 site">
+            <div class="card">
+              <img src="<?php echo'../images/' . $image ?>" alt="..." class="card-img-top">
+              <div class="price"><?php echo number_format((float)$price,2, '.', '') . ' $'; ?></div>
+              <div class="card-block">
+                <h4 class="card-title"><?php echo $name; ?></h4>
+                <p class="card-text"><?php echo $description; ?></p>
+                <a href="#" class="btn btn-order" role="button"><span class="fas fa-shopping-cart"></span>Commader</a>
+              </div>
+            </div>
+          </div>
         
       </div>
     </div>
