@@ -16,19 +16,32 @@
 <body>
   <div class="container site">
     <h1 class="text-logo"><span class="fas fa-utensils"></span> Maksym Food <span class="fas fa-utensils"></h1>
-    <nav>
-      <ul class="nav nav-pills">
-        <li role="presentation" class="nav-item"><a class="nav-link active" href="#Menu" data-toggle="tab">Menus</a></li>
-        <li role="presentation" class="nav-item"><a class="nav-link" href="#Burger" data-toggle="tab">Burgers</a></li>
-        <li role="presentation" class="nav-item"><a class="nav-link" href="#Snack" data-toggle="tab">Snacks</a></li>
-        <li role="presentation" class="nav-item"><a class="nav-link" href="#Salade" data-toggle="tab">Salades</a></li>
-        <li role="presentation" class="nav-item"><a class="nav-link" href="#Boisson" data-toggle="tab">Boissons</a></li>
-        <li role="presentation" class="nav-item"><a class="nav-link" href="#Dessert" data-toggle="tab">Desserts</a></li>
+
+    <?php
+    require 'admin/database.php';
+    echo'<nav>
+           <ul class="nav nav-pills">';
+    $db = Database::connect();
+    $statement = $db->query('SELECT * FROM categories');
+    $categories = $statement->fetchAll();
+    foreach($categories AS $category){
+      if($category['id'] == '1')
+        echo '<li role="presentation" class="nav-item"><a class="nav-link active" href="#' . $category['id'] . '" data-toggle="tab">' .$category['name']. '</a></li>';
+      else 
+        echo '<li role="presentation" class="nav-item"><a class="nav-link" href="#' . $category['id'] . '" data-toggle="tab">' .$category['name']. '</a></li>';
+    }
+    echo   '</ul>
+        </nav>';
+
+
+    ?>
+
+
       </ul>
     </nav>
 
     <div class="tab-content">
-      <div class="tab-pane active" id="Menu">
+      <div class="tab-pane active" id="1">
         <div class="row">
 
           <div class="col-sm-6 col-md-4">
@@ -100,7 +113,7 @@
 
       </div>
     </div>
-    <div class="tab-pane" id="Burger">
+    <div class="tab-pane" id="2">
         <div class="row">
 
           <div class="col-sm-6 col-md-4">
@@ -173,7 +186,7 @@
       </div>
     </div>
 
-    <div class="tab-pane" id="Snack">
+    <div class="tab-pane" id="3">
         <div class="row">
 
           <div class="col-sm-6 col-md-4">
@@ -236,7 +249,7 @@
       </div>
     </div>
 
-    <div class="tab-pane" id="Salade">
+    <div class="tab-pane" id="4">
         <div class="row">
 
           <div class="col-sm-6 col-md-4">
@@ -298,7 +311,7 @@
       </div>
     </div>
 
-    <div class="tab-pane" id="Boisson">
+    <div class="tab-pane" id="5">
         <div class="row">
 
           <div class="col-sm-6 col-md-4">
@@ -360,7 +373,7 @@
       </div>
     </div>
 
-    <div class="tab-pane" id="Dessert">
+    <div class="tab-pane" id="6">
         <div class="row">
 
           <div class="col-sm-6 col-md-4">
