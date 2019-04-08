@@ -26,9 +26,9 @@
     $categories = $statement->fetchAll();
     foreach($categories AS $category){
       if($category['id'] == '1')
-        echo '<li role="presentation" class="nav-item"><a class="nav-link active" href="#' . $category['id'] . '" data-toggle="tab">' .$category['name']. '</a></li>';
+        echo '<li role="presentation" class="nav-item"><a class="nav-link active" href="#' . $category['name'] . '" data-toggle="tab">' .$category['name']. '</a></li>';
       else 
-        echo '<li role="presentation" class="nav-item"><a class="nav-link" href="#' . $category['id'] . '" data-toggle="tab">' .$category['name']. '</a></li>';
+        echo '<li role="presentation" class="nav-item"><a class="nav-link" href="#' . $category['name'] . '" data-toggle="tab">' .$category['name']. '</a></li>';
     }
     echo   '</ul>
         </nav>';
@@ -41,7 +41,7 @@
     </nav>
 
     <div class="tab-content">
-      <div class="tab-pane active" id="1">
+      <div class="tab-pane active" id="Menus">
         <div class="row">
 
           <div class="col-sm-6 col-md-4">
@@ -113,7 +113,7 @@
 
       </div>
     </div>
-    <div class="tab-pane" id="2">
+    <div class="tab-pane" id="Burgers">
         <div class="row">
 
           <div class="col-sm-6 col-md-4">
@@ -186,7 +186,7 @@
       </div>
     </div>
 
-    <div class="tab-pane" id="3">
+    <div class="tab-pane" id="Snacks">
         <div class="row">
 
           <div class="col-sm-6 col-md-4">
@@ -249,7 +249,7 @@
       </div>
     </div>
 
-    <div class="tab-pane" id="4">
+    <div class="tab-pane" id="Salades">
         <div class="row">
 
           <div class="col-sm-6 col-md-4">
@@ -311,7 +311,7 @@
       </div>
     </div>
 
-    <div class="tab-pane" id="5">
+    <div class="tab-pane" id="Boissons">
         <div class="row">
 
           <div class="col-sm-6 col-md-4">
@@ -373,7 +373,7 @@
       </div>
     </div>
 
-    <div class="tab-pane" id="6">
+    <div class="tab-pane" id="Desserts">
         <div class="row">
 
           <div class="col-sm-6 col-md-4">
