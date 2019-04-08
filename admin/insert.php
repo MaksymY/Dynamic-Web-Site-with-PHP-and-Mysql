@@ -5,7 +5,7 @@
 
   if(!empty($_POST)){
       $name = checkInput($_POST['name']);
-      $description = checkInput($_POST['descriotion']);
+      $description = checkInput($_POST['description']);
       $price = checkInput($_POST['price']);
       $category = checkInput($_POST['category']);
       $image = checkInput($_FILES['image']['name']);
